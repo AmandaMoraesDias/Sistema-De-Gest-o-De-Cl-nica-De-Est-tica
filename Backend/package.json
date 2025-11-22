@@ -1,12 +1,8 @@
 {
-  "name": "projetofinal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "fastify": "^5.6.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "prisma": "^6.19.0"
+  }
 }

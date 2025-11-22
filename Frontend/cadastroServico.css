@@ -1,0 +1,111 @@
+/* =====================================
+   FONTE E PALETA PREMIUM
+===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --gold: #c6a667;
+    --gold-dark: #b3904c;
+    --white: #ffffff;
+    --background: #f8f6f0;
+    --text: #3a3a3a;
+    --shadow-soft: rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================
+   ESTILO GERAL
+===================================== */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+/* =====================================
+   HEADER
+===================================== */
+.top-menu {
+    background: var(--white);
+    padding: 25px 0;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--gold-dark);
+    box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+/* =====================================
+   FORM CONTAINER
+===================================== */
+.form-container {
+    width: 70%;
+    max-width: 700px;
+    margin: 50px auto;
+    background: var(--white);
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px var(--shadow-soft);
+}
+
+/* =====================================
+   CAMPOS DO FORMULÁRIO
+===================================== */
+.service-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--gold-dark);
+    font-size: 17px;
+}
+
+input, textarea {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: 0.25s;
+    background: #fafafa;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 10px rgba(198, 166, 103, 0.3);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* =====================================
+   BOTÃO
+===================================== */
+.btn-salvar {
+    padding: 15px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(198, 166, 103, 0.4);
+}
+
+.btn-salvar:hover {
+    background: var(--gold-dark);
+    transform: translateY(-3px);
+}
