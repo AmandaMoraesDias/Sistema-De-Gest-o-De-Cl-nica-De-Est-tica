@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cadastro / Consulta de Cliente</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Quicksand:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="card">
+
+        <!-- PAINEL ESQUERDO -->
+        <div class="panel register">
+            <h1>Cadastrar cliente</h1>
+
+            <form class="form">
+                <label class="label">Nome:</label>
+                <input type="text" placeholder="Digite o nome">
+
+                <label class="label">Email:</label>
+                <input type="email" placeholder="usuario@exemplo.com">
+
+                <label class="label">Data de nascimento:</label>
+                <input type="date">
+
+                <label class="label">Observações:</label>
+                <textarea rows="4" placeholder="Anotações sobre o cliente..."></textarea>
+
+                <div class="actions">
+                    <button class="btn primary">Salvar</button>
+                    <button class="btn ghost" type="button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- DIVISÓRIA -->
+        <div class="divider"></div>
+
+        <!-- PAINEL DIREITO -->
+        <div class="panel consult">
+            <h1>Consultar cliente</h1>
+
+            <label class="label">Digite o nome do cliente:</label>
+
+            <div class="searchwrap">
+                <input type="search" placeholder="Digite aqui...">
+                <button class="iconbtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-wi
