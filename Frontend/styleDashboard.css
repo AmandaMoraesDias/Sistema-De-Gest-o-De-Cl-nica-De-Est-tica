@@ -5,21 +5,32 @@
 
 :root {
     /* DOURADO NOBRE (DESTAQUE) */
-    --gold: #681841; /* Dourado mais profundo, mais ouro */
-    --gold-light: #f7c1f1; /* Amarelo muito claro, quase creme */
-    --gold-strong: #c765c0; /* Dourado escuro para contraste */
+    --gold: #681841;
+    /* Dourado mais profundo, mais ouro */
+    --gold-light: #f7c1f1;
+    /* Amarelo muito claro, quase creme */
+    --gold-strong: #c765c0;
+    /* Dourado escuro para contraste */
 
     /* CORES NEUTRAS (BASE) */
-    --white: #ffffff; /* Branco puro */
-    --background: #fcfcfc; /* Fundo muito leve, quase branco */
-    --primary-dark: #1f2833; /* Azul Marinho/Quase Preto para texto e principais */
-    --gray-text: #4a5568; /* Cinza-azulado escuro para texto secundário */
-    --gray-medium: #a0aec0; /* Cinza claro para linhas e bordas */
-    --gray-light: #edf2f7; /* Cinza muito claro para fundos de listas/cards */
+    --white: #ffffff;
+    /* Branco puro */
+    --background: #fcfcfc;
+    /* Fundo muito leve, quase branco */
+    --primary-dark: #1f2833;
+    /* Azul Marinho/Quase Preto para texto e principais */
+    --gray-text: #4a5568;
+    /* Cinza-azulado escuro para texto secundário */
+    --gray-medium: #a0aec0;
+    /* Cinza claro para linhas e bordas */
+    --gray-light: #edf2f7;
+    /* Cinza muito claro para fundos de listas/cards */
 
     /* STATUS CORES (AJUSTADAS PARA HARMONIA) */
-    --pending: #e67e22; /* Laranja Telha, contrasta bem com Marinho */
-    --complete: #27ae60; /* Verde Esmeralda, mais vibrante */
+    --pending: #e67e22;
+    /* Laranja Telha, contrasta bem com Marinho */
+    --complete: #27ae60;
+    /* Verde Esmeralda, mais vibrante */
 
     /* SOMBRAS */
     --shadow-soft: rgba(0, 0, 0, 0.04);
@@ -33,7 +44,8 @@ body {
     margin: 0;
     background: var(--background);
     font-family: "Poppins", sans-serif;
-    color: var(--primary-dark); /* Texto principal em Marinho */
+    color: var(--primary-dark);
+    /* Texto principal em Marinho */
 }
 
 /* =====================================
@@ -41,12 +53,15 @@ body {
 ===================================== */
 .top-menu {
     background: var(--white);
-    padding: 18px 0; /* Um pouco mais de padding */
-    box-shadow: 0 3px 18px var(--shadow-medium); /* Sombra um pouco mais forte */
+    padding: 18px 0;
+    /* Um pouco mais de padding */
+    box-shadow: 0 3px 18px var(--shadow-medium);
+    /* Sombra um pouco mais forte */
     position: sticky;
     top: 0;
     z-index: 10;
-    border-bottom: 3px solid var(--gold-light); /* Borda mais destacada */
+    border-bottom: 3px solid var(--gold-light);
+    /* Borda mais destacada */
 }
 
 .header-content {
@@ -59,7 +74,8 @@ body {
 
 /* LOGO */
 .logo img {
-    height: 80px; /* Levemente menor */
+    height: 80px;
+    /* Levemente menor */
     width: auto;
     display: block;
     border-radius: 6px;
@@ -73,7 +89,8 @@ body {
 
 .top-menu nav a {
     text-decoration: none;
-    color: var(--primary-dark); /* Links em Marinho */
+    color: var(--primary-dark);
+    /* Links em Marinho */
     font-size: 18px;
     padding: 10px 18px;
     border-radius: 10px;
@@ -95,7 +112,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px; /* Mais espaçamento */
+    gap: 60px;
+    /* Mais espaçamento */
     margin: 60px auto;
     width: 85%;
 }
@@ -105,11 +123,14 @@ body {
 ===================================== */
 .info-box {
     background: var(--white);
-    padding: 45px 35px; /* Mais padding */
+    padding: 45px 35px;
+    /* Mais padding */
     width: 55%;
     text-align: center;
-    border-radius: 20px; /* Borda um pouco mais suave */
-    border: 1px solid var(--gray-medium); /* Borda mais sutil */
+    border-radius: 20px;
+    /* Borda um pouco mais suave */
+    border: 1px solid var(--gray-medium);
+    /* Borda mais sutil */
     box-shadow: 0 8px 30px var(--shadow-soft);
     animation: fadeIn 0.8s ease;
 }
@@ -118,7 +139,8 @@ body {
     font-family: "Playfair Display", serif;
     font-size: 36px;
     margin-bottom: 25px;
-    color: var(--gold); /* Título em Dourado */
+    color: var(--gold);
+    /* Título em Dourado */
     letter-spacing: 1.5px;
 }
 
@@ -126,12 +148,18 @@ body {
     font-size: 20px;
     margin: 12px 0;
     font-weight: 500;
-    color: var(--gray-text); /* Parágrafos com tom de cinza-azulado */
+    color: var(--gray-text);
+    /* Parágrafos com tom de cinza-azulado */
 }
 
 /* Cores status */
-.pendentes { color: var(--pending); }
-.concluidos { color: var(--complete); }
+.pendentes {
+    color: var(--pending);
+}
+
+.concluidos {
+    color: var(--complete);
+}
 
 /* =====================================
     BOTÕES PREMIUM
@@ -143,25 +171,35 @@ body {
     align-items: center;
 }
 
-.buttons button {
+.buttons .btn {
     width: 280px;
     padding: 18px;
-    border: none;
+
+    display: flex;
+    /* faz o link virar botão */
+    align-items: center;
+    justify-content: center;
+
     border-radius: 30px;
     background: linear-gradient(145deg, var(--gold), var(--gold-strong));
-    color: var(--primary-dark); /* Texto do botão em Marinho para alto contraste */
+    color: var(--primary-dark);
     font-weight: 600;
     font-size: 19px;
     letter-spacing: 0.8px;
+
+    text-decoration: none;
+    /* remove sublinhado */
     cursor: pointer;
     transition: 0.3s ease;
-    box-shadow: 0 6px 15px rgba(184, 134, 11, 0.4); /* Sombra baseada no gold */
+
+    box-shadow: 0 6px 15px rgba(184, 134, 11, 0.4);
 }
 
-.buttons button:hover {
+.buttons .btn:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(184, 134, 11, 0.6);
 }
+
 
 /* =====================================
     LISTA DE AGENDAMENTOS
@@ -189,16 +227,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--gray-light); /* Fundo muito claro */
+    background: var(--gray-light);
+    /* Fundo muito claro */
     padding: 20px 25px;
     border-radius: 15px;
     margin-bottom: 18px;
     transition: 0.3s ease;
-    border-left: 6px solid var(--gold); /* Linha dourada forte */
+    border-left: 6px solid var(--gold);
+    /* Linha dourada forte */
 }
 
 .agendamento:hover {
-    background: var(--gold-light); /* Hover suave com a cor light */
+    background: var(--gold-light);
+    /* Hover suave com a cor light */
     transform: translateY(-4px);
     box-shadow: 0 6px 20px var(--shadow-medium);
 }
@@ -211,7 +252,8 @@ body {
 .agendamento .info span {
     font-size: 16px;
     color: var(--gray-text);
-    display: block; /* Para melhor layout */
+    display: block;
+    /* Para melhor layout */
 }
 
 /* Status tags */
@@ -224,19 +266,28 @@ body {
 }
 
 .status.pendente {
-    background: #fdf5e6; /* Creme/Bege muito claro */
+    background: #fdf5e6;
+    /* Creme/Bege muito claro */
     color: var(--pending);
     border: 1px solid var(--pending);
 }
 
 .status.concluido {
-    background: #e8f5e9; /* Menta muito claro */
+    background: #e8f5e9;
+    /* Menta muito claro */
     color: var(--complete);
     border: 1px solid var(--complete);
 }
 
 /* Animação */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
