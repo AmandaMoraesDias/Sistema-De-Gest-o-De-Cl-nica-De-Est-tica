@@ -176,7 +176,6 @@ body {
     padding: 18px;
 
     display: flex;
-    /* faz o link virar botão */
     align-items: center;
     justify-content: center;
 
@@ -188,7 +187,6 @@ body {
     letter-spacing: 0.8px;
 
     text-decoration: none;
-    /* remove sublinhado */
     cursor: pointer;
     transition: 0.3s ease;
 
@@ -228,13 +226,11 @@ body {
     justify-content: space-between;
     align-items: center;
     background: var(--gray-light);
-    /* Fundo muito claro */
     padding: 20px 25px;
     border-radius: 15px;
     margin-bottom: 18px;
     transition: 0.3s ease;
     border-left: 6px solid var(--gold);
-    /* Linha dourada forte */
 }
 
 .agendamento:hover {
