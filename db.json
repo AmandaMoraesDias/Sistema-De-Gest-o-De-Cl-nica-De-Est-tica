@@ -1,0 +1,84 @@
+{
+  "clientes": [
+    {
+      "id": "2b97",
+      "nome": "Amada ",
+      "email": "trabalhofaculdadeap@gmail.com",
+      "dataNascimento": "2005-10-24",
+      "observacoes": "Cliente número 1"
+    },
+    {
+      "id": "3c3d",
+      "nome": "Priscila Nicoli",
+      "email": "priscilanicoli666@gmail.com",
+      "dataNascimento": "2005-07-28",
+      "observacoes": "Cliente número 2"
+    },
+    {
+      "id": "2e0d",
+      "nome": "Maria",
+      "email": "maria@gmail.com",
+      "dataNascimento": "2003-06-10",
+      "observacoes": ""
+    }
+  ],
+  "servicos": [
+    {
+      "id": "f52b",
+      "nome": "Harmonização Facial",
+      "descricao": "Nossa clínica realiza harmonização facial com técnicas minimamente invasivas, utilizando ácido hialurônico e toxina botulínica para aprimorar contornos, corrigir assimetrias e equilibrar a estética facial com segurança.",
+      "duracao": "120",
+      "valor": "1500"
+    },
+    {
+      "id": "7dc4",
+      "nome": "Limpeza facial",
+      "descricao": "Realizamos limpeza facial profissional com higienização, esfoliação e hidratação profunda para renovar a pele e melhorar sua textura.",
+      "duracao": "60",
+      "valor": "150"
+    },
+    {
+      "id": "97e5",
+      "nome": "Preenchimento labial",
+      "descricao": "Realizamos preenchimento labial com ácido hialurônico para definir contorno, aumentar volume e proporcionar hidratação e simetria aos lábios com total segurança.",
+      "duracao": "90",
+      "valor": "1500"
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "54ee",
+      "clienteId": "2b97",
+      "servicoId": "7dc4",
+      "data": "2025-12-05",
+      "hora": "16:00",
+      "observacoes": "",
+      "status": "concluido"
+    },
+    {
+      "id": "dce1",
+      "clienteId": "3c3d",
+      "servicoId": "97e5",
+      "data": "2025-12-10",
+      "hora": "13:00",
+      "observacoes": ""
+    },
+    {
+      "id": "2bab",
+      "clienteId": "2e0d",
+      "servicoId": "7dc4",
+      "data": "2025-12-05",
+      "hora": "00:03",
+      "observacoes": "",
+      "status": "concluido"
+    },
+    {
+      "id": "26d5",
+      "clienteId": "2e0d",
+      "servicoId": "f52b",
+      "data": "2025-12-05",
+      "hora": "01:00",
+      "observacoes": ""
+    }
+  ]
+}

@@ -10,6 +10,43 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="novoAtendimento.css">
+
+    <!-- CARREGA CLIENTES E SERVIÇOS -->
+    <script defer>
+        async function carregarClientes() {
+            const resposta = await fetch("http://localhost:3000/clientes");
+            const clientes = await resposta.json();
+
+            const selectClientes = document.getElementById("select-clientes");
+
+            clientes.forEach(c => {
+                const opt = document.createElement("option");
+                opt.value = c.id;
+                opt.textContent = c.nome;
+                selectClientes.appendChild(opt);
+            });
+        }
+
+        async function carregarServicos() {
+            const resposta = await fetch("http://localhost:3000/servicos");
+            const servicos = await resposta.json();
+
+            const selectServicos = document.getElementById("select-servicos");
+
+            servicos.forEach(s => {
+                const opt = document.createElement("option");
+                opt.value = s.id;
+                opt.textContent = s.nome;
+                selectServicos.appendChild(opt);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            carregarClientes();
+            carregarServicos();
+        });
+    </script>
+
 </head>
 
 <body>
@@ -18,37 +55,138 @@
 
         <div class="card">
 
-            <!-- COLUNA ESQUERDA -->
             <div class="section">
+
                 <h1>Novo agendamento</h1>
 
+                <!-- CAMPO DE PESQUISA DOS AGENDAMENTOS -->
+                <label>Pesquisar agendamento:</label>
+                <input id="pesquisa-ag" type="search" placeholder="Digite nome, serviço, data..." />
+                <div id="resultados-ag"></div>
+                <hr>
+
                 <label>Cliente:</label>
-                <select>
+                <select id="select-clientes">
                     <option selected disabled>(selecionar)</option>
                 </select>
 
                 <label>Serviço:</label>
-                <select>
+                <select id="select-servicos">
                     <option selected disabled>(selecionar)</option>
                 </select>
 
                 <label>Data:</label>
-                <input type="date">
+                <input type="date" id="data">
 
                 <label>Hora:</label>
-                <input type="time">
+                <input type="time" id="hora">
 
                 <label>Observações:</label>
-                <textarea placeholder=""></textarea>
+                <textarea id="obs" placeholder=""></textarea>
 
                 <div class="buttons">
-                    <button class="btn primary">Salvar Agendamento</button>
+                    <button class="btn primary" id="btnSalvar">Salvar Agendamento</button>
                     <button class="btn secondary">Cancelar</button>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!-- SALVAR AGENDAMENTO -->
+    <script>
+        document.getElementById("btnSalvar").addEventListener("click", async () => {
+
+            const clienteId = document.getElementById("select-clientes").value;
+            const servicoId = document.getElementById("select-servicos").value;
+
+            const data = document.getElementById("data").value;
+            const hora = document.getElementById("hora").value;
+            const observacoes = document.getElementById("obs").value;
+
+            const resposta = await fetch("http://localhost:3000/agendamentos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    clienteId,
+                    servicoId,
+                    data,
+                    hora,
+                    observacoes
+                })
+            });
+
+            const resultado = await resposta.json();
+            console.log(resultado);
+
+            alert("Agendamento cadastrado com sucesso!");
+        });
+    </script>
+
+    <!-- CONSULTAR AGENDAMENTOS COM ENTER -->
+    <script>
+        const campoPesquisaAg = document.getElementById("pesquisa-ag");
+        const resultadosAg = document.getElementById("resultados-ag");
+
+        campoPesquisaAg.addEventListener("keydown", async (event) => {
+
+            if (event.key !== "Enter") return;
+            event.preventDefault();
+
+            const termo = campoPesquisaAg.value.toLowerCase().trim();
+
+            if (!termo) {
+                resultadosAg.innerHTML = "<p>Digite algo para pesquisar.</p>";
+                return;
+            }
+
+            // BUSCAR TUDO
+            const respAg = await fetch("http://localhost:3000/agendamentos");
+            const respCli = await fetch("http://localhost:3000/clientes");
+            const respServ = await fetch("http://localhost:3000/servicos");
+
+            const agendamentos = await respAg.json();
+            const clientes = await respCli.json();
+            const servicos = await respServ.json();
+
+            // UNIR DADOS DE CLIENTE E SERVIÇO
+            const completos = agendamentos.map(a => {
+                const cli = clientes.find(c => c.id == a.clienteId);
+                const serv = servicos.find(s => s.id == a.servicoId);
+
+                return {
+                    ...a,
+                    clienteNome: cli ? cli.nome : "Cliente não encontrado",
+                    servicoNome: serv ? serv.nome : "Serviço não encontrado"
+                };
+            });
+
+            // FILTRAR POR TEXTO
+            const filtrados = completos.filter(item =>
+                item.clienteNome.toLowerCase().includes(termo) ||
+                item.servicoNome.toLowerCase().includes(termo) ||
+                item.data.toLowerCase().includes(termo) ||
+                item.hora.toLowerCase().includes(termo)
+            );
+
+            if (filtrados.length === 0) {
+                resultadosAg.innerHTML = "<p><strong>Não há nenhum agendamento com essa informação.</strong></p>";
+                return;
+            }
+
+            resultadosAg.innerHTML = filtrados
+                .map(a => `
+                    <div class="resultado-item">
+                        <p><strong>Cliente:</strong> ${a.clienteNome}</p>
+                        <p><strong>Serviço:</strong> ${a.servicoNome}</p>
+                        <p><strong>Data:</strong> ${a.data}</p>
+                        <p><strong>Hora:</strong> ${a.hora}</p>
+                        <p><strong>Obs:</strong> ${a.observacoes}</p>
+                        <hr>
+                    </div>
+                `)
+                .join("");
+        });
+    </script>
 
 </body>
 

@@ -3,42 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Estética - Dashboard</title>
+    <title>Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleDashboard.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
     <header class="top-menu">
         <div class="header-content">
-
-            <!-- LOGO -->
             <div class="logo">
                 <img src="images/logotipo.png" alt="Logo">
             </div>
 
-            <!-- MENU -->
             <nav>
-                <a href="#">Início</a>
-                <a href="#">Agenda</a>
-                <a href="#">Clientes</a>
+                <a href="dashboard.html">Início</a>
+                <a href="novoAtendimento.html">Agenda</a>
+                <a href="cadastrar_cliente.html">Clientes</a>
                 <a href="cadastroServico.html">Serviços</a>
             </nav>
-
         </div>
     </header>
 
-
-    <!-- CARD DE INFORMAÇÕES -->
     <div class="top-container">
-
         <section class="info-box">
             <h2>Agendamentos do Dia</h2>
-            <p class="total">Total: <strong>15</strong></p>
-            <p class="pendentes">Pendentes: <strong>5</strong></p>
-            <p class="concluidos">Concluídos: <strong>10</strong></p>
+            <p>Total: <strong id="total-dia">0</strong></p>
+            <p>Pendentes: <strong id="pendentes-dia">0</strong></p>
+            <p>Concluídos: <strong id="concluidos-dia">0</strong></p>
         </section>
 
         <section class="buttons">
@@ -48,40 +41,11 @@
         </section>
     </div>
 
-
-    <!-- TABELA -->
     <section class="lista-agendamentos">
-        <h2>Lista de Agendamentos</h2>
-
-        <div class="agendamento">
-            <div class="info">
-                <strong>Maria Silva</strong>
-                <span>10:30 — Corte de cabelo</span>
-            </div>
-            <span class="status pendente">Pendente</span>
-        </div>
-
-        <div class="agendamento">
-            <div class="info">
-                <strong>Ana Costa</strong>
-                <span>11:00 — Manicure</span>
-            </div>
-            <span class="status concluido">Concluído</span>
-        </div>
-
-        <div class="agendamento">
-            <div class="info">
-                <strong>João Pereira</strong>
-                <span>14:00 — Barba</span>
-            </div>
-            <span class="status pendente">Pendente</span>
-        </div>
+        <h2>Lista de Agendamentos de Hoje</h2>
+        <div id="lista-agendamentos"></div>
     </section>
-    
-<script src="cliente.js"></script>
 
+    <script src="dashboard.js"></script>
 </body>
-
-
-
 </html>
