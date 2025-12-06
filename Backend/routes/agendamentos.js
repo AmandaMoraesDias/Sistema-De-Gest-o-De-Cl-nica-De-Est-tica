@@ -1,41 +1,63 @@
 import express from "express";
-import { PrismaClient } from "@prisma/client";
-
+import fs from "fs";
 const router = express.Router();
-const prisma = new PrismaClient();
 
-// Cadastrar agendamento
-router.post("/", async (req, res) => {
-  try {
-    const { clienteId, servicoId, data, hora, observacoes } = req.body;
+const DB_PATH = "./db.json";
 
-    const novo = await prisma.agendamento.create({
-      data: {
-        clienteId: Number(clienteId),
-        servicoId: Number(servicoId),
-        data,
-        hora,
-        observacoes,
-        status: "pendente"
-      }
-    });
+function lerDB() {
+  return JSON.parse(fs.readFileSync(DB_PATH, "utf8"));
+}
 
-    res.status(201).json(novo);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ erro: "Erro ao cadastrar agendamento" });
-  }
+function salvarDB(db) {
+  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
+}
+
+// LISTAR TODOS
+router.get("/", (req, res) => {
+  const db = lerDB();
+  res.json(db.agendamentos || []);
 });
 
-// Listar todos
-router.get("/", async (req, res) => {
-  try {
-    const lista = await prisma.agendamento.findMany();
-    res.json(lista);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ erro: "Erro ao buscar agendamentos" });
+// CADASTRAR
+router.post("/", (req, res) => {
+  const { clienteId, servicoId, data, hora, observacoes } = req.body;
+
+  const db = lerDB();
+
+  const novo = {
+    id: Date.now().toString(),          // sempre string
+    clienteId: clienteId.toString(),    // sempre string
+    servicoId: servicoId.toString(),    // sempre string
+    data,
+    hora,
+    observacoes,
+    status: "pendente"
+  };
+
+  db.agendamentos.push(novo);
+  salvarDB(db);
+
+  res.status(201).json(novo);
+});
+
+// ATUALIZAR STATUS
+router.patch("/:id", (req, res) => {
+  const id = req.params.id.toString(); // string
+  const { status } = req.body;
+
+  const db = lerDB();
+
+  const agendamento = db.agendamentos.find(a => a.id === id);
+
+  if (!agendamento) {
+    return res.status(404).json({ erro: "Agendamento não encontrado" });
   }
+
+  agendamento.status = status || agendamento.status;
+
+  salvarDB(db);
+
+  res.json(agendamento);
 });
 
 export default router;

@@ -15,7 +15,7 @@
 
     <main class="card">
 
-        <!-- PAINEL ESQUERDO – CADASTRAR -->
+        <!-- PAINEL ESQUERDO -->
         <div class="panel register">
             <h1>Cadastrar Serviço</h1>
 
@@ -56,7 +56,7 @@
 
     </main>
 
-    <!-- SALVAR NO JSON SERVER -->
+    <!-- SALVAR NO JSON  -->
     <script>
         const form = document.querySelector(".service-form");
 
@@ -68,7 +68,7 @@
             const duracao = document.getElementById("duracao").value;
             const valor = document.getElementById("valor").value;
 
-            const resposta = await fetch("http://localhost:3000/servicos", {
+            const resposta = await fetch("http://localhost:3001/servicos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -84,7 +84,7 @@
         });
     </script>
 
-    <!-- CONSULTAR SERVIÇOS COM ENTER -->
+    <!-- CONSULTAR SERVIÇOS -->
     <script>
         const pesquisaServ = document.getElementById("pesquisa-serv");
         const resultadosServ = document.getElementById("resultados-serv");
@@ -101,7 +101,7 @@
                 return;
             }
 
-            const resposta = await fetch("http://localhost:3000/servicos");
+            const resposta = await fetch("http://localhost:3001/servicos");
             const servicos = await resposta.json();
 
             const filtrados = servicos.filter(s =>

@@ -14,7 +14,7 @@
     <!-- CARREGA CLIENTES E SERVIÇOS -->
     <script defer>
         async function carregarClientes() {
-            const resposta = await fetch("http://localhost:3000/clientes");
+            const resposta = await fetch("http://localhost:3001/clientes");  
             const clientes = await resposta.json();
 
             const selectClientes = document.getElementById("select-clientes");
@@ -28,7 +28,7 @@
         }
 
         async function carregarServicos() {
-            const resposta = await fetch("http://localhost:3000/servicos");
+            const resposta = await fetch("http://localhost:3001/servicos"); 
             const servicos = await resposta.json();
 
             const selectServicos = document.getElementById("select-servicos");
@@ -59,7 +59,6 @@
 
                 <h1>Novo agendamento</h1>
 
-                <!-- CAMPO DE PESQUISA DOS AGENDAMENTOS -->
                 <label>Pesquisar agendamento:</label>
                 <input id="pesquisa-ag" type="search" placeholder="Digite nome, serviço, data..." />
                 <div id="resultados-ag"></div>
@@ -103,7 +102,7 @@
             const hora = document.getElementById("hora").value;
             const observacoes = document.getElementById("obs").value;
 
-            const resposta = await fetch("http://localhost:3000/agendamentos", {
+            const resposta = await fetch("http://localhost:3001/agendamentos", {  
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -139,16 +138,14 @@
                 return;
             }
 
-            // BUSCAR TUDO
-            const respAg = await fetch("http://localhost:3000/agendamentos");
-            const respCli = await fetch("http://localhost:3000/clientes");
-            const respServ = await fetch("http://localhost:3000/servicos");
+            const respAg = await fetch("http://localhost:3001/agendamentos");
+            const respCli = await fetch("http://localhost:3001/clientes");
+            const respServ = await fetch("http://localhost:3001/servicos");
 
             const agendamentos = await respAg.json();
             const clientes = await respCli.json();
             const servicos = await respServ.json();
 
-            // UNIR DADOS DE CLIENTE E SERVIÇO
             const completos = agendamentos.map(a => {
                 const cli = clientes.find(c => c.id == a.clienteId);
                 const serv = servicos.find(s => s.id == a.servicoId);
@@ -160,7 +157,6 @@
                 };
             });
 
-            // FILTRAR POR TEXTO
             const filtrados = completos.filter(item =>
                 item.clienteNome.toLowerCase().includes(termo) ||
                 item.servicoNome.toLowerCase().includes(termo) ||

@@ -20,6 +20,13 @@
       "email": "maria@gmail.com",
       "dataNascimento": "2003-06-10",
       "observacoes": ""
+    },
+    {
+      "id": "2357",
+      "nome": "Julia",
+      "email": "julia@gmail.com",
+      "dataNascimento": "2003-12-05",
+      "observacoes": ""
     }
   ],
   "servicos": [
@@ -43,6 +50,13 @@
       "descricao": "Realizamos preenchimento labial com ácido hialurônico para definir contorno, aumentar volume e proporcionar hidratação e simetria aos lábios com total segurança.",
       "duracao": "90",
       "valor": "1500"
+    },
+    {
+      "id": "8eb0",
+      "nome": "Rinoplastia",
+      "descricao": "Rinoplastia",
+      "duracao": "200",
+      "valor": "5000"
     }
   ],
   "agendamentos": [
@@ -53,7 +67,7 @@
       "data": "2025-12-05",
       "hora": "16:00",
       "observacoes": "",
-      "status": "concluido"
+      "status": "pendente"
     },
     {
       "id": "dce1",
@@ -78,6 +92,31 @@
       "servicoId": "f52b",
       "data": "2025-12-05",
       "hora": "01:00",
+      "observacoes": "",
+      "status": "concluido"
+    },
+    {
+      "id": "a9ee",
+      "clienteId": "2e0d",
+      "servicoId": "7dc4",
+      "data": "2025-12-08",
+      "hora": "15:30",
+      "observacoes": ""
+    },
+    {
+      "id": "f764",
+      "clienteId": "2e0d",
+      "servicoId": "97e5",
+      "data": "2025-12-05",
+      "hora": "22:30",
+      "observacoes": ""
+    },
+    {
+      "id": "82e0",
+      "clienteId": "3c3d",
+      "servicoId": "97e5",
+      "data": "2025-12-06",
+      "hora": "17:00",
       "observacoes": ""
     }
   ]

@@ -1,9 +1,13 @@
 async function carregarDashboard() {
-    const hoje = new Date().toISOString().slice(0, 10);
+    const hoje = new Date().toLocaleDateString("pt-BR", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).split("/").reverse().join("-");
 
-    const respAg = await fetch("http://localhost:3000/agendamentos");
-    const respCli = await fetch("http://localhost:3000/clientes");
-    const respServ = await fetch("http://localhost:3000/servicos");
+    const respAg = await fetch("http://localhost:3001/agendamentos");
+    const respCli = await fetch("http://localhost:3001/clientes");
+    const respServ = await fetch("http://localhost:3001/servicos");
 
     const agendamentos = await respAg.json();
     const clientes = await respCli.json();
@@ -13,7 +17,7 @@ async function carregarDashboard() {
 
     document.getElementById("total-dia").textContent = agDia.length;
     document.getElementById("pendentes-dia").textContent =
-        agDia.filter(a => a.status !== "concluido").length;
+        agDia.filter(a => (a.status || "pendente") !== "concluido").length;
     document.getElementById("concluidos-dia").textContent =
         agDia.filter(a => a.status === "concluido").length;
 
@@ -51,26 +55,5 @@ async function carregarDashboard() {
         `;
     });
 }
-
-// ===============================
-// 🔥 CONCLUIR AGENDAMENTO (EVENT DELEGATION)
-// ===============================
-document.addEventListener("click", async (event) => {
-    const botao = event.target.closest(".btn-concluir");
-    if (!botao) return; 
-
-    const id = botao.dataset.id;
-
-    if (!confirm("Marcar este agendamento como concluído?")) return;
-
-    await fetch(`http://localhost:3000/agendamentos/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: "concluido" })
-    });
-
-    carregarDashboard();
-});
-
 
 carregarDashboard();

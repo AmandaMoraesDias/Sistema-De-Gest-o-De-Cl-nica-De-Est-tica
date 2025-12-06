@@ -29,13 +29,18 @@
 
             <a href="#" class="forgot">Esqueceu a sua senha?</a>
 
-            <button class="btn">Entrar</button>
+            <button class="btn" id="btnEntrar">Entrar</button>
 
             <p class="signup">Não tem uma conta? <a href="#">Cadastre-se</a></p>
         </div>
 
     </div>
+    <script>
+        document.getElementById("btnEntrar").addEventListener("click", () => {
+            window.location.href = "dashboard.html";
+        });
+    </script>
 
 </body>
 
-</html> 
+</html>
